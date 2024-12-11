@@ -1,3 +1,4 @@
+import java.lang.Integer;
 class Solution {
     public int[] getNoZeroIntegers(int n) {
         int []res=new int[2];
