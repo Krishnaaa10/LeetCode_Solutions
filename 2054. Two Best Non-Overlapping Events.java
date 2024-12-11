@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Solution {
     public int maxTwoEvents(int[][] events) {
         Arrays.sort(events, (a, b) -> Integer.compare(a[0], b[0]));
