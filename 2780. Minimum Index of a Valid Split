@@ -1,0 +1,40 @@
+class Solution {
+    public int minimumIndex(List<Integer> list) {
+        int [] nums=list.stream().mapToInt(Integer::intValue).toArray();
+        int n=nums.length;
+        int maj=majorityElement(nums,0,n);
+        int count=0;
+        for(int num:nums) {
+        	if(num==maj) {
+        		count++;
+        	}
+        }
+        int lc=0;
+        for(int i=0;i<n-1;i++) {
+        	if(nums[i]==maj) {
+        		lc++;
+        	}
+        	int left=i+1;
+        	int right=n-left;
+        	if(lc>left/2 && (count-lc)>right/2) {
+        		return i;
+        	}
+        }
+        return -1;
+    }
+    public static int majorityElement(int [] arr,int start,int end) {
+		int e=arr[start];
+		int v=1;
+		for(int i=start+1;i<end;i++) {
+			if(arr[i]==e) v++;
+			else {
+				v--;
+				if(v==0) {
+					e=arr[i];
+					v=1;
+				}
+			}
+		}
+		return e;	
+	}
+}
